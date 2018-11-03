@@ -25,4 +25,8 @@
 
 </div>
 
+<<<<<<< HEAD
 <?php include('views/elements/footer.php');?>
+=======
+<?php include('views/elements/footer.php');?>
+>>>>>>> aaef7bf76dcffc998cfe556c525d32a5b9aab426
