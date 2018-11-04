@@ -6,10 +6,6 @@ class LoginController extends Controller{
 
    public function do_login() {
 	   // handle login
-     //public function add($num1 = 0,$num2 = 0,$num3 = 0){
-     //$sum = $num1+$num2+$num3;
-    //$this->set('numbers',$sum);
-    //}
 
        $this->userObject = new Users();
 
@@ -19,13 +15,34 @@ class LoginController extends Controller{
 
            $_SESSION['uID'] = $userInfo['uID'];
 
-           header('Location: '.BASE_URL);
+           if(strlen($_SESSION['redirect']) >0 ){
+             $view = $_SESSION['redirect'];
+             unset($_SESSION['redirect']);
+             header('Location: '.BASE_URL.$view);
+
+           }
+           else {
+                header('Location: '.BASE_URL);
+
+           }
+
+
 
        }
        else {
-           $this->set('error','Check information entered.');
+           $this->set('error','Wrong password / email combination');
        }
 
    }
+	public function logout(){
+    
+    //unset the session
+    unset($_SESSION['uID']);
+    //close the session
+    session_write_close();
 
+    //send to the homepage
+    header('Locatoin: '.BASE_URL);
+
+  }
 }
