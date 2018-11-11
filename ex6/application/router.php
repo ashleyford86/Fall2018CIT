@@ -19,9 +19,8 @@ function autoloader($class){
 
 }
 require_once('application/config.php');
-require_once('libraries/password.php');
 spl_autoload_register('autoloader');
-
+require_once('libraries/password.php');
 //grab the path info and break it apart into separate variables
 $paths = explode('/', $_SERVER['PATH_INFO']);
 
@@ -40,7 +39,7 @@ for($i=3;$i < count($paths);$i++){
 }
 
 //uppercase the first variable name and append Controller to it. If none, the default controller will load
-$controller = view.'Controller';
+$controller = $view.'Controller';
 //instantiate our controller and pass in parameters
 if (class_exists($controller)) {
     new $controller($view, $method, $parameters);
