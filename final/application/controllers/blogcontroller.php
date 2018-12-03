@@ -4,6 +4,7 @@ class BlogController extends Controller{
 
 	public $postObject;
 	public $commentsObject;
+	public $categoryObject;
 
 
    	public function post($pID){
